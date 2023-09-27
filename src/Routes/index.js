@@ -26,7 +26,7 @@ const Index = () => {
                             exact={true}
                         />
                     ))}
-                </Route>
+                </Route> 
 
                 <Route>
                     {authProtectedRoutes.map((route, idx) => (
