@@ -49,28 +49,28 @@ const ProfileDropdown = () => {
                 <DropdownMenu className="dropdown-menu-end">
 
                     <h6 className="dropdown-header">Welcome {userName}!</h6>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/profile"}><i className="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+                    <DropdownItem ><i className="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                         <span className="align-middle">Profile</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/apps-chat"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle">Messages</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "#"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle">Taskboard</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/pages-faqs"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle">Help</span></DropdownItem>
                     <div className="dropdown-divider"></div>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/pages-profile"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle">Balance : <b>$5971.67</b></span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/pages-profile-settings"}><span
+                    <DropdownItem ><span
                         className="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                             className="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 className="align-middle">Settings</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/auth-lockscreen-basic"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span className="align-middle">Lock screen</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/logout"}><i
+                    <DropdownItem ><i
                         className="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                             className="align-middle" data-key="t-logout">Logout</span></DropdownItem>
                 </DropdownMenu>
@@ -80,3 +80,11 @@ const ProfileDropdown = () => {
 };
 
 export default ProfileDropdown;
+
+// href={process.env.PUBLIC_URL + "/profile"}
+// href={process.env.PUBLIC_URL + "/apps-chat"}
+// href={process.env.PUBLIC_URL + "/pages-faqs"}
+// href={process.env.PUBLIC_URL + "/pages-profile"}
+// href={process.env.PUBLIC_URL + "/pages-profile-settings"}
+// href={process.env.PUBLIC_URL + "/auth-lockscreen-basic"}
+// href={process.env.PUBLIC_URL + "/logout"}

@@ -211,8 +211,8 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isPasswordReset,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-pass-reset-basic" },
-                        { id: 2, label: "Cover", link: "/auth-pass-reset-cover" },
+                        { id: 1, label: "Basic",  },
+                        { id: 2, label: "Cover",  },
                     ]
                 },
                 {
@@ -227,8 +227,8 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isPasswordCreate,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-pass-change-basic" },
-                        { id: 2, label: "Cover", link: "/auth-pass-change-cover" },
+                        { id: 1, label: "Basic"  },
+                        { id: 2, label: "Cover" },
                     ]
                 },
                 {
@@ -243,8 +243,8 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isLockScreen,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-lockscreen-basic" },
-                        { id: 2, label: "Cover", link: "/auth-lockscreen-cover" },
+                        { id: 1, label: "Basic"  },
+                        { id: 2, label: "Cover" },
                     ]
                 },
                 {
@@ -259,9 +259,9 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isLogout,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-logout-basic" },
-                        { id: 2, label: "Cover", link: "/auth-logout-cover" },
-                    ]
+                        { id: 1, label: "Basic"},                        
+                         { id: 2, label:  "Cover" }       
+                      ]
                 },
                 {
                     id: "successMessage",
@@ -275,8 +275,8 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isSuccessMessage,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-success-msg-basic" },
-                        { id: 2, label: "Cover", link: "/auth-success-msg-cover" },
+                        { id: 1, label: "Basic",  },
+                        { id: 2, label: "Cover",  },
                     ]
                 },
                 {
@@ -291,8 +291,8 @@ const Navdata = () => {
                     parentId: "authentication",
                     stateVariables: isVerification,
                     childItems: [
-                        { id: 1, label: "Basic", link: "/auth-twostep-basic" },
-                        { id: 2, label: "Cover", link: "/auth-twostep-cover" },
+                        { id: 1, label: "Basic" },
+                        { id: 2, label: "Cover" }
                     ]
                 },
                 {
@@ -499,3 +499,32 @@ const Navdata = () => {
     return <React.Fragment>{menuItems}</React.Fragment>;
 };
 export default Navdata;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// link: "/auth-pass-reset-basic"
+// link: "/auth-pass-reset-cover"
+// link: "/auth-pass-change-basic
+// link: "/auth-pass-change-cover
+// link: "/auth-lockscreen-basic"
+// link: "/auth-lockscreen-cover"
+// link: "/auth-logout-basic" },
+
+// link: "/auth-logout-cover" },
+
+// link: "/auth-success-msg-basic
+// link: "/auth-success-msg-cover
+// link: "/auth-twostep-basic" },
+// link: "/auth-twostep-cover" },
