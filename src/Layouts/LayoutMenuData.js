@@ -126,53 +126,53 @@ const Navdata = () => {
             label: "Auththentication",
             isHeader: true,
         },
-        {
-            id: "Authentication",
-            label: "Authentication",
-            icon: <FeatherIcon icon="users" className="icon-dual" />,
-            link: "/#",
-            click: function (e) {
-                e.preventDefault();
-                setIsAuth(!isAuth);
-                setIscurrentState('Auth');
-                updateIconSidebar(e);
-            },
-            stateVariables: isAuth,
-            subItems: [
-                {
-                    id: "signIn",
-                    label: "Sign In",
-                    link: "/#",
-                    isChildItem: true,
-                    click: function (e) {
-                        e.preventDefault();
-                        setIsSignIn(!isSignIn);
-                    },
-                    parentId: "authentication",
-                    stateVariables: isSignIn,
-                    childItems: [
-                        { id: 1, label: "Basic", link: "/auth-signin-basic" },
-                        { id: 2, label: "Cover", link: "/auth-signin-cover" },
-                    ]
-                },
-                {
-                    id: "signUp",
-                    label: "Sign Up",
-                    link: "/#",
-                    isChildItem: true,
-                    click: function (e) {
-                        e.preventDefault();
-                        setIsSignUp(!isSignUp);
-                    },
-                    parentId: "authentication",
-                    stateVariables: isSignUp,
-                    childItems: [
-                        { id: 1, label: "Basic", link: "/auth-signup-basic" },
-                        { id: 2, label: "Cover", link: "/auth-signup-cover" },
-                    ]
-                },
-            ],
-        },
+        // {
+        //     id: "Authentication",
+        //     label: "Authentication",
+        //     icon: <FeatherIcon icon="users" className="icon-dual" />,
+        //     link: "/#",
+        //     click: function (e) {
+        //         e.preventDefault();
+        //         setIsAuth(!isAuth);
+        //         setIscurrentState('Auth');
+        //         updateIconSidebar(e);
+        //     },
+        //     stateVariables: isAuth,
+        //     subItems: [
+        //         {
+        //             id: "signIn",
+        //             label: "Sign In",
+        //             link: "/#",
+        //             isChildItem: true,
+        //             click: function (e) {
+        //                 e.preventDefault();
+        //                 setIsSignIn(!isSignIn);
+        //             },
+        //             parentId: "authentication",
+        //             stateVariables: isSignIn,
+        //             childItems: [
+        //                 { id: 1, label: "Basic", link: "/auth-signin-basic" },
+        //                 { id: 2, label: "Cover", link: "/auth-signin-cover" },
+        //             ]
+        //         },
+        //         {
+        //             id: "signUp",
+        //             label: "Sign Up",
+        //             link: "/#",
+        //             isChildItem: true,
+        //             click: function (e) {
+        //                 e.preventDefault();
+        //                 setIsSignUp(!isSignUp);
+        //             },
+        //             parentId: "authentication",
+        //             stateVariables: isSignUp,
+        //             childItems: [
+        //                 { id: 1, label: "Basic", link: "/auth-signup-basic" },
+        //                 { id: 2, label: "Cover", link: "/auth-signup-cover" },
+        //             ]
+        //         },
+        //     ],
+        // },
      
         // {
         //     id: "landing",
