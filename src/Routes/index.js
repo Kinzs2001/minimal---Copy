@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
 //Layouts
-import NonAuthLayout from "../Layouts/NonAuthLayout";
+// import NonAuthLayout from "../Layouts/NonAuthLayout";
 import VerticalLayout from "../Layouts/index";
 
 //routes
@@ -18,9 +18,9 @@ const Index = () => {
                         <Route
                             path={route.path}
                             element={
-                                <NonAuthLayout>
+                                <>
                                     {route.component}
-                                </NonAuthLayout>
+                                </>
                             }
                             key={idx}
                             exact={true}
