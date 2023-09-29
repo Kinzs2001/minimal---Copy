@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, FormFeedback, Alert, Spinner } from 'reactstrap';
-import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+// import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
@@ -93,7 +93,7 @@ const Login = (props) => {
     document.title = "Basic SignIn | Velzon - React Admin & Dashboard Template";
     return (
         <React.Fragment>
-            <ParticlesAuth>
+            <>
                 <div className="auth-page-content">
                     <Container>
                         <Row>
@@ -225,7 +225,7 @@ const Login = (props) => {
                         </Row>
                     </Container>
                 </div>
-            </ParticlesAuth>
+            </>
         </React.Fragment>
     );
 };

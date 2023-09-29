@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 //import images 
 import logoLight from "../../assets/images/logo-light.png";
-import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+// import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
 import { createSelector } from "reselect";
 
 const Register = () => {
@@ -90,7 +90,7 @@ const {
 
     return (
         <React.Fragment>
-            <ParticlesAuth>
+            <>
                 <div className="auth-page-content">
                     <Container>
                         <Row>
@@ -249,7 +249,7 @@ const {
                         </Row>
                     </Container>
                 </div>
-            </ParticlesAuth>
+            </>
         </React.Fragment>
     );
 };
