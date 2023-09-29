@@ -1,33 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Dropdown, DropdownMenu, DropdownToggle, Form } from 'reactstrap';
 
 //import images
 import logoSm from "../assets/images/logo-sm.png";
 import logoDark from "../assets/images/logo-dark.png";
 import logoLight from "../assets/images/logo-light.png";
 
-//import Components
-// import SearchOption from '../Components/Common/SearchOption';
-// import LanguageDropdown from '../Components/Common/LanguageDropdown';
-// import WebAppsDropdown from '../Components/Common/WebAppsDropdown';
-// import MyCartDropdown from '../Components/Common/MyCartDropdown';
-// import FullScreenDropdown from '../Components/Common/FullScreenDropdown';
-// import NotificationDropdown from '../Components/Common/NotificationDropdown';
-import ProfileDropdown from '../Components/Common/ProfileDropdown';
-// import LightDark from '../Components/Common/LightDark';
+//import Components 
 
-import { changeSidebarVisibility } from '../store/actions';
-import { useSelector, useDispatch } from "react-redux";
+import ProfileDropdown from '../Components/Common/ProfileDropdown';
+
+import { useSelector } from "react-redux";
 import { createSelector } from 'reselect';
 
-const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
-    const [search, setSearch] = useState(false);
-    const toogleSearch = () => {
-        setSearch(!search);
-    };
+const Header = ({  headerClass }) => {
 
-    const dispatch = useDispatch();
+
+    // const dispatch = useDispatch();
     const sidebarVisibilityData = createSelector(
         (state) => state.Layout.sidebarVisibilitytype,
         (sidebarVisibilitytype) => sidebarVisibilitytype
@@ -40,7 +29,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
 
     const toogleMenuBtn = () => {
         var windowSize = document.documentElement.clientWidth;
-        dispatch(changeSidebarVisibility("show"));
+        // dispatch(changeSidebarVisibility("show"));
         if (windowSize > 767)
             document.querySelector(".hamburger-icon").classList.toggle('open');
         //For collapse horizontal menu
@@ -60,10 +49,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                 document.documentElement.setAttribute('data-sidebar-size', 'lg');
             }
         }
-        //Two column menu
-        if (document.documentElement.getAttribute('data-layout') === "twocolumn") {
-            document.body.classList.contains('twocolumn-panel') ? document.body.classList.remove('twocolumn-panel') : document.body.classList.add('twocolumn-panel');
-        }
+ 
     };
     return (
         <React.Fragment>
@@ -105,49 +91,10 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                             </button>
 
 
-                            {/* <SearchOption /> */}
                         </div>
 
                         <div className="d-flex align-items-center">
 
-                            <Dropdown isOpen={search} toggle={toogleSearch} className="d-md-none topbar-head-dropdown header-item">
-                                <DropdownToggle type="button" tag="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
-                                    <i className="bx bx-search fs-22"></i>
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu-lg dropdown-menu-end p-0">
-                                    <Form className="p-3">
-                                        <div className="form-group m-0">
-                                            <div className="input-group">
-                                                <input type="text" className="form-control" placeholder="Search ..."
-                                                    aria-label="Recipient's username" />
-                                                <button className="btn btn-primary" type="submit"><i
-                                                    className="mdi mdi-magnify"></i></button>
-                                            </div>
-                                        </div>
-                                    </Form>
-                                </DropdownMenu>
-                            </Dropdown>
-
-                            {/* LanguageDropdown */}
-                            {/* <LanguageDropdown /> */}
-
-                            {/* WebAppsDropdown */}
-                            {/* <WebAppsDropdown /> */}
-
-                            {/* MyCartDropdwon */}
-                            {/* <MyCartDropdown /> */}
-
-                            {/* FullScreenDropdown */}
-                            {/* <FullScreenDropdown /> */}
-
-                            {/* Dark/Light Mode set */}
-                            {/* <LightDark
-                                layoutMode={layoutModeType}
-                                onChangeLayoutMode={onChangeLayoutMode}
-                            /> */}
-
-                            {/* NotificationDropdown */}
-                            {/* <NotificationDropdown /> */}
 
                             {/* ProfileDropdown */}
                             <ProfileDropdown />

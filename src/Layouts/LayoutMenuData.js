@@ -8,33 +8,8 @@ const Navdata = () => {
     const history = useNavigate();
     //state data
     const [isDashboard, setIsDashboard] = useState(false);
-    const [isAuth, setIsAuth] = useState(false);
-    const [isBaseUi, setIsBaseUi] = useState(false);
-    const [isAdvanceUi, setIsAdvanceUi] = useState(false);
-    const [isIcons, setIsIcons] = useState(false);
-    const [isMaps, setIsMaps] = useState(false);
-    const [isMultiLevel, setIsMultiLevel] = useState(false);
 
 
-    // Authentication
-    const [isSignIn, setIsSignIn] = useState(false);
-    const [isSignUp, setIsSignUp] = useState(false);
-    const [isPasswordReset, setIsPasswordReset] = useState(false);
-    const [isPasswordCreate, setIsPasswordCreate] = useState(false);
-    const [isLockScreen, setIsLockScreen] = useState(false);
-    const [isLogout, setIsLogout] = useState(false);
-    const [isSuccessMessage, setIsSuccessMessage] = useState(false);
-    const [isVerification, setIsVerification] = useState(false);
-    const [isError, setIsError] = useState(false);
-
-    // Pages
-    const [isProfile, setIsProfile] = useState(false);
-    const [isLanding, setIsLanding] = useState(false);
-
-
-    // Multi Level
-    const [isLevel1, setIsLevel1] = useState(false);
-    const [isLevel2, setIsLevel2] = useState(false);
 
     const [iscurrentState, setIscurrentState] = useState('Dashboard');
 
@@ -52,42 +27,42 @@ const Navdata = () => {
         }
     }
 
-    useEffect(() => {
-        document.body.classList.remove('twocolumn-panel');
+    // useEffect(() => {
+    //     document.body.classList.remove('twocolumn-panel');
         
-        if (iscurrentState !== 'Auth') {
-            setIsAuth(false);
-        }
+    //     if (iscurrentState !== 'Auth') {
+    //         setIsAuth(false);
+    //     }
      
-        if (iscurrentState !== 'BaseUi') {
-            setIsBaseUi(false);
-        }
-        if (iscurrentState !== 'AdvanceUi') {
-            setIsAdvanceUi(false);
-        }
+    //     if (iscurrentState !== 'BaseUi') {
+    //         setIsBaseUi(false);
+    //     }
+    //     if (iscurrentState !== 'AdvanceUi') {
+    //         setIsAdvanceUi(false);
+    //     }
        
-        if (iscurrentState !== 'Icons') {
-            setIsIcons(false);
-        }
+    //     if (iscurrentState !== 'Icons') {
+    //         setIsIcons(false);
+    //     }
 
-        if (iscurrentState !== 'MuliLevel') {
-            setIsMultiLevel(false);
-        }
-        if (iscurrentState === 'Widgets') {
-            history("/widgets");
-            document.body.classList.add('twocolumn-panel');
-        }
-    }, [
-        history,
-        iscurrentState,
-        isDashboard,
-        isAuth,
-        isBaseUi,
-        isAdvanceUi,
-        isIcons,
-        isMaps,
-        isMultiLevel
-    ]);
+    //     if (iscurrentState !== 'MuliLevel') {
+    //         setIsMultiLevel(false);
+    //     }
+    //     if (iscurrentState === 'Widgets') {
+    //         history("/widgets");
+    //         document.body.classList.add('twocolumn-panel');
+    //     }
+    // }, [
+    //     history,
+    //     iscurrentState,
+    //     isDashboard,
+    //     isAuth,
+    //     isBaseUi,
+    //     isAdvanceUi,
+    //     isIcons,
+    //     isMaps,
+    //     isMultiLevel
+    // ]);
 
     const menuItems = [
         {
