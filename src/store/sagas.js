@@ -13,9 +13,9 @@ export default function* rootSaga() {
   yield all([
     //public
     fork(LayoutSaga),
-    fork(AccountSaga),
-    fork(AuthSaga),
-    fork(ProfileSaga),
+    // fork(AccountSaga),
+    // fork(AuthSaga),
+    // fork(ProfileSaga),
   
   ]);
 }
