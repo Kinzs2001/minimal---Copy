@@ -11,8 +11,7 @@ import Profile from "./auth/profile/reducer";
 
 
 
-//API Key
-import APIKey from "./apikey/reducer";
+
 
 const rootReducer = combineReducers({
     // public
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
     Account,
     ForgetPassword,
     Profile,
-    APIKey
 });
 
 export default rootReducer;

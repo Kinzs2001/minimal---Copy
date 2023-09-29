@@ -9,8 +9,6 @@ import ProfileSaga from "./auth/profile/saga";
 
 
 
-//API Key
-import APIKeysaga from "./apikey/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -21,6 +19,5 @@ export default function* rootSaga() {
     fork(ForgetSaga),
     fork(ProfileSaga),
   
-    fork(APIKeysaga),
   ]);
 }
