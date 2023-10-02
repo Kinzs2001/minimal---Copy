@@ -6,14 +6,14 @@ import { Routes, Route } from "react-router-dom";
 import VerticalLayout from "../Layouts/index";
 
 //routes
-// import { authProtectedRoutes, publicRoutes } from "./allRoutes";
-// import { AuthProtected } from './AuthProtected';
+import { authProtectedRoutes, publicRoutes } from "./allRoutes";
+import { AuthProtected } from './AuthProtected';
 
 const Index = () => {
     return (
         <React.Fragment>
             <Routes>
-                {/* <Route>
+                <Route>
                     {publicRoutes.map((route, idx) => (
                         <Route
                             path={route.path}
@@ -41,7 +41,7 @@ const Index = () => {
                             exact={true}
                         />
                     ))}
-                </Route> */}
+                </Route>
                 <Route path="/dashboard" element={<VerticalLayout/>} />
             </Routes>
         </React.Fragment>
