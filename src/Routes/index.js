@@ -1,23 +1,27 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import VerticalLayout from "../Layouts/index";
 import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 import User from "../pages/Authentication/user-profile";
+import ManageCategory from '../pages/Authentication/ManageCategory';
+import ManageUser from '../pages/Authentication/ManageUser';
 
 
 const Index = () => {
     return (
         <React.Fragment>
-            <Routes>
-                {/* <Route path="/login" element={<Login/>} /> */}
-                <Route path="/" element={<VerticalLayout/>} />
-                {/* <Route path="/logout" element={<Logout/>} />
-                <Route path="/register" element={<Register/>} />
-                <Route path="/user" element={<User/>} /> */}
-            </Routes>
+            <BrowserRouter>
+            <VerticalLayout />
+                <Routes>                       
+                    <Route path="/manage-category" element={<ManageCategory />} />
+                    <Route path="/manage-users" element={<ManageUser />} />
+                    <Route path="/login" target="_blank" element={<Login />} />
+                    <Route path="/register" target="_blank" element={<Register />} />
+                </Routes>
+            </BrowserRouter>
         </React.Fragment>
     );
 };

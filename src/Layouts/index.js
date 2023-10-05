@@ -24,6 +24,7 @@ import {
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from 'reselect';
+import { Outlet } from 'react-router-dom';
 
 
 const Layout = (props) => {
@@ -135,6 +136,7 @@ const Layout = (props) => {
                     onChangeLayoutMode={onChangeLayoutMode} />
                 <Sidebar layoutType={layoutType} />
                 <div className="main-content">{props.children}
+                    <Outlet/>
                     <Footer />
                 </div>
             </div>

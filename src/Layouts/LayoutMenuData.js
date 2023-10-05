@@ -110,7 +110,7 @@ const Navdata = () => {
             id: "Category",
             label: "ManageCategory",
             icon: <FiLayers />,
-            link: "/ManageCategory",
+            link: "/manage-category",
             stateVariables: isCategory,
             click: function (e) {
                 e.preventDefault();
@@ -123,7 +123,7 @@ const Navdata = () => {
             id:"ManageUsers",
             label: "ManageUsers",
             icon: <FiUsers />,
-            link: "/ManageUsers",
+            link: "/manage-users",
             stateVariables: isManageUsers,
             click: function (e) {
                 e.preventDefault();
