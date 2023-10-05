@@ -1,13 +1,18 @@
- import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Import Icons
-import FeatherIcon from "feather-icons-react";
+import { FiLayers } from "react-icons/fi";
+import { FiHome } from "react-icons/fi";
+import { FiUsers } from "react-icons/fi";
 
 const Navdata = () => {
     const history = useNavigate();
     //state data
     const [isDashboard, setIsDashboard] = useState(false);
+    const [isCategory, setIsCategory] = useState(false);
+    const [isManageUsers, setIsManageUsers] = useState(false);
+    // const [isCategory, setIsisCategory] = useState(false);
 
 
 
@@ -29,18 +34,18 @@ const Navdata = () => {
 
     // useEffect(() => {
     //     document.body.classList.remove('twocolumn-panel');
-        
+
     //     if (iscurrentState !== 'Auth') {
     //         setIsAuth(false);
     //     }
-     
+
     //     if (iscurrentState !== 'BaseUi') {
     //         setIsBaseUi(false);
     //     }
     //     if (iscurrentState !== 'AdvanceUi') {
     //         setIsAdvanceUi(false);
     //     }
-       
+
     //     if (iscurrentState !== 'Icons') {
     //         setIsIcons(false);
     //     }
@@ -72,7 +77,7 @@ const Navdata = () => {
         {
             id: "dashboard",
             label: "Dashboards",
-            icon: <FeatherIcon icon="home" className="icon-dual" />,
+            icon: <FiHome icon="home" className="icon-dual" />,
             link: "/#",
             stateVariables: isDashboard,
             click: function (e) {
@@ -94,13 +99,39 @@ const Navdata = () => {
                 //     link: "/dashboard-crm",
                 //     parentId: "dashboard",
                 // },
-               
+
             ],
-        }, 
-                {
-            label: "Auththentication",
+        },
+        {
+            label: "Admin",
             isHeader: true,
         },
+        {
+            id: "Category",
+            label: "ManageCategory",
+            icon: <FiLayers />,
+            link: "/ManageCategory",
+            stateVariables: isCategory,
+            click: function (e) {
+                e.preventDefault();
+                setIsCategory(!isCategory);
+                setIscurrentState('Category');
+                updateIconSidebar(e);
+            },
+        },
+        {
+            id:"ManageUsers",
+            label: "ManageUsers",
+            icon: <FiUsers />,
+            link: "/ManageUsers",
+            stateVariables: isManageUsers,
+            click: function (e) {
+                e.preventDefault();
+                setIsManageUsers(!ManageUsers);
+                setIscurrentState('ManageUsers');
+                updateIconSidebar(e);
+            },
+        }
         // {
         //     id: "Authentication",
         //     label: "Authentication",
@@ -148,7 +179,7 @@ const Navdata = () => {
         //         },
         //     ],
         // },
-     
+
         // {
         //     id: "landing",
         //     label: "Landing",
@@ -182,7 +213,7 @@ const Navdata = () => {
         //         setIscurrentState('Widgets');
         //     }
         // },
-    
+
         // {
         //     id: "icons",
         //     label: "Icons",
