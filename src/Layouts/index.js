@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import withRouter from '../Components/Common/withRouter';
 
+
+
 //import Components
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -134,11 +136,11 @@ const Layout = (props) => {
                     layoutModeType={layoutModeType}
                     onChangeLayoutMode={onChangeLayoutMode} />
                 <Sidebar layoutType={layoutType} />
-                <div className="main-content">{props.children}
-                    <Footer />
+                <div className="main-content" style={{"margin-top" : "80px"}}>{props.children}
                 </div>
+                    <Footer />
             </div>
-            {/* <RightSidebar /> */}
+           
         </React.Fragment>
 
     );

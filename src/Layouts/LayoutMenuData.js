@@ -78,7 +78,7 @@ const Navdata = () => {
             id: "dashboard",
             label: "Dashboards",
             icon: <FiHome icon="home" className="icon-dual" />,
-            link: "/",
+            link: "/dashboard",
             stateVariables: isDashboard,
             click: function (e) {
                 e.preventDefault();

@@ -21,8 +21,8 @@ const authProtectedRoutes = [
     component: <Navigate to="/dashboard" />,
   },
   { path: "*", component: <Navigate to="/dashboard" /> },
-  { path: "/manage-category", component: <ManageCategory/> },
   { path: "/manage-users", component: <ManageUsers/> },
+  { path: "/manage-category", component: <ManageCategory/> },
 ];
 
 const publicRoutes = [
