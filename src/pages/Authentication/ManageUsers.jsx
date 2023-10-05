@@ -2,11 +2,11 @@ import React from 'react'
 
 const ManageUsers = () => {
   return (
-    <div>   
+    <div className='m-52'>   
       ManageUsers
     </div>
   )
 }
 
 export default ManageUsers
-    ManageUsers
+    

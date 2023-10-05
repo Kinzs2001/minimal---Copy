@@ -2,7 +2,7 @@ import React from 'react'
 
 const ManageCategory = () => {
   return (
-    <div>
+    <div className=" m-52 bg-red-600">
       ManageCategory
     </div>
   )
