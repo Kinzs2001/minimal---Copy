@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext} from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Container, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
 import BreadCrumb from '../Components/Common/BreadCrumb';
 import SimpleBar from 'simplebar-react';
@@ -6,7 +6,30 @@ import { Link } from 'react-router-dom';
 import List from 'list.js';
 import Flatpickr from "react-flatpickr";
 
+//context 
+import datacontext from '../context/Context';
+
+const dataInitial = [
+    {
+    "id": "data",
+    "Category": "category",
+    "Name": "name",
+    "image": "image",
+    "status": "status",
+},
+    {
+    "id": "data1",
+    "Category": "category1",
+    "Name": "name1",
+    "image": "image1",
+    "status": "status1",
+}
+]
+
 const ManageCategory = () => {
+    const Context = useContext(datacontext);
+    const { Data , setData } = Context;
+
     const [modal_list, setmodal_list] = useState(false);
     function tog_list() {
         setmodal_list(!modal_list);
@@ -18,7 +41,6 @@ const ManageCategory = () => {
     }
   return (
     <>
-
     <div className="table">
       <div className="page-content p-5 table-hover">
                 <Container fluid>
@@ -425,7 +447,7 @@ const ManageCategory = () => {
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Close</button>
-                            <button type="submit" className="btn btn-success" id="add-btn" onClick={() => setmodal_list(false)}>Add Customer</button>
+                            <button type="submit" className="btn btn-success bg-green-500" id="add-btn" onClick={() => setmodal_list(false)}>Add Customer</button>
                             {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
                         </div>
                     </ModalFooter>
@@ -453,6 +475,8 @@ const ManageCategory = () => {
                 </ModalBody>
             </Modal>
             </div>
+    
+
     </>
   );
 };
