@@ -32,7 +32,7 @@ const ManageCategory = () => {
 
   return (
     <>
-    <div className="page-content">
+    <div className="page-content p-2">
                 <Container fluid>
                     <BreadCrumb title="Listjs" pageTitle="Tables" />
                     <Row>
