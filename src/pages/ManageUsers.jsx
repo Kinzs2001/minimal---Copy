@@ -44,7 +44,7 @@ const ManageUsers = () => {
                                             </Col>
                                             <Col className="col-sm-auto">
                                                 <div>
-                                                    <Button color="primary" className="add-btn me-1" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
+                                                    <Button color="primary" className="add-btn me-1 bg-blue-400" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
                                                     <Button className="btn btn-soft-danger"><i className="ri-delete-bin-2-line"></i></Button>
                                                 </div>
                                             </Col>
