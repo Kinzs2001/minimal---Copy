@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Container, ListGroup, ListGroupItem, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactstrap';
-import BreadCrumb from '../../Components/Common/BreadCrumb';
+import BreadCrumb from '../Components/Common/BreadCrumb';
 import SimpleBar from 'simplebar-react';
 import { Link } from 'react-router-dom';
 import List from 'list.js';
@@ -20,14 +20,15 @@ const ManageUsers = () => {
     }
   return (
     <>
+    <div className="table">
     <div className="page-content p-5 table-hover">
                 <Container fluid>
-                    <BreadCrumb title="List" pageTitle="Tables" />
+                    <BreadCrumb title="User" pageTitle="Dashboard" />
                     <Row>
                         <Col lg={12}>
                             <Card>
                                 <CardHeader>
-                                    <h4 className="card-title mb-0">Add, Edit & Remove</h4>
+                                    <h4 className="card-title mb-0">Manage Users</h4>
                                 </CardHeader>
 
                                 <CardBody>
@@ -36,7 +37,7 @@ const ManageUsers = () => {
                                             <Col className="col-sm">
                                                 <div className="d-flex ">
                                                     <div className="search-box ms-2">
-                                                        <input type="text" className="form-control search" placeholder="Search..." />
+                                                        <input type="text" className="form-control search" placeholder="Type a keyword..." />
                                                         <i className="ri-search-line search-icon"></i>
                                                     </div>
                                                 </div>
@@ -50,7 +51,7 @@ const ManageUsers = () => {
                                         </Row>
 
                                         <div className="table-responsive table-card mt-3 mb-1">
-                                            <table className="table align-middle table-nowrap" id="customerTable">
+                                            <table className="table align-middle table-nowrap table-hover" id="customerTable">
                                                 <thead className="table-light">
                                                     <tr>
                                                         <th scope="col" style={{ width: "50px" }}>
@@ -464,6 +465,7 @@ const ManageUsers = () => {
                     </div>
                 </ModalBody>
             </Modal>
+    </div>
     </>
   )
 }

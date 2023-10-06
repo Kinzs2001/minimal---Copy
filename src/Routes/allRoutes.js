@@ -9,8 +9,9 @@ import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 
 //pages
-import ManageCategory from "../pages/Authentication/ManageCategory";
-import ManageUsers from "../pages/Authentication/ManageUsers";
+import ManageCategory from "../pages/ManageCategory";
+import ManageUsers from "../pages/ManageUsers";
+import Dashboard from "../pages/Dashboard";
 
 const authProtectedRoutes = [
   // this route should be at the end of all other routes
@@ -20,7 +21,8 @@ const authProtectedRoutes = [
     exact: true,
     component: <Navigate to="/dashboard" />,
   },
-  { path: "*", component: <Navigate to="/dashboard" /> },
+  { path: "/", component: <Navigate to="/dashboard" /> },
+  { path: "/dashboard", component: <Dashboard /> },
   { path: "/manage-users", component: <ManageUsers/> },
   { path: "/manage-category", component: <ManageCategory/> },
 ];
