@@ -1,4 +1,7 @@
+.navbar-brand-box {
+    padding: 24px 4.2rem !important;
 
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

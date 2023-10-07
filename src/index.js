@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { configureStore } from "./store";
 import App from './App';
 
-
+//context
+import { ContextProvider } from './contexts/contextProvider';
 
 import "./index.css"
 import "./App.css"
@@ -18,7 +19,9 @@ root.render(
   <Provider store={configureStore({})}>
     <React.Fragment>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <ContextProvider>
         <App />
+      </ContextProvider>
       </BrowserRouter>
     </React.Fragment>
   </Provider>
