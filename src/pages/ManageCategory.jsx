@@ -7,28 +7,11 @@ import List from 'list.js';
 import Flatpickr from "react-flatpickr";
 
 //context 
-import datacontext from '../context/Context';
+import { useStateContext } from '../contexts/contextProvider';
 
-const dataInitial = [
-    {
-    "id": "data",
-    "Category": "category",
-    "Name": "name",
-    "image": "image",
-    "status": "status",
-},
-    {
-    "id": "data1",
-    "Category": "category1",
-    "Name": "name1",
-    "image": "image1",
-    "status": "status1",
-}
-]
 
 const ManageCategory = () => {
-    const Context = useContext(datacontext);
-    const { Data , setData } = Context;
+    const { Data } = useStateContext();
 
     const [modal_list, setmodal_list] = useState(false);
     function tog_list() {
@@ -89,295 +72,33 @@ const ManageCategory = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody className="list form-check-all">
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option1" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
-                                                        <td className="customer_name">Mary Cousar</td>
-                                                        <td className="email">marycousar@velzon.com</td>
-                                                        <td className="phone">580-464-4694</td>
-                                                        <td className="date">06 Apr, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option2" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2102</Link></td>
-                                                        <td className="customer_name">Jeff Taylor</td>
-                                                        <td className="email">jefftaylor@velzon.com</td>
-                                                        <td className="phone">863-577-5537</td>
-                                                        <td className="date">15 Feb, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option3" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2103</Link></td>
-                                                        <td className="customer_name">Robert McMahon</td>
-                                                        <td className="email">robertmcmahon@velzon.com</td>
-                                                        <td className="phone">786-253-9927</td>
-                                                        <td className="date">12 Jan, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option4" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2104</Link></td>
-                                                        <td className="customer_name">Michael Morris</td>
-                                                        <td className="email">michaelmorris@velzon.com</td>
-                                                        <td className="phone">805-447-8398</td>
-                                                        <td className="date">19 May, 2021</td>
-                                                        <td className="status"><span className="badge bg-danger-subtle text-danger text-uppercase">Block</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option5" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2105</Link></td>
-                                                        <td className="customer_name">Kevin Dawson</td>
-                                                        <td className="email">kevindawson@velzon.com</td>
-                                                        <td className="phone">213-741-4294</td>
-                                                        <td className="date">14 Apr, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option6" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2106</Link></td>
-                                                        <td className="customer_name">Carolyn Jones</td>
-                                                        <td className="email">carolynjones@velzon.com</td>
-                                                        <td className="phone">414-453-5725</td>
-                                                        <td className="date">07 Jun, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option7" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2107</Link></td>
-                                                        <td className="customer_name">Glen Matney</td>
-                                                        <td className="email">glenmatney@velzon.com</td>
-                                                        <td className="phone">515-395-1069</td>
-                                                        <td className="date">02 Nov, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option8" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#"
-                                                            className="fw-medium link-primary">#VZ2108</Link></td>
-                                                        <td className="customer_name">Charles Kubik</td>
-                                                        <td className="email">charleskubik@velzon.com</td>
-                                                        <td className="phone">231-480-8536</td>
-                                                        <td className="date">25 Sep, 2021</td>
-                                                        <td className="status"><span className="badge bg-danger-subtle text-danger text-uppercase">Block</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option9" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2109</Link></td>
-                                                        <td className="customer_name">Herbert Stokes</td>
-                                                        <td className="email">herbertstokes@velzon.com</td>
-                                                        <td className="phone">312-944-1448</td>
-                                                        <td className="date">20 Jul, 2021</td>
-                                                        <td className="status"><span className="badge bg-danger-subtle text-danger text-uppercase">Block</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option10" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2110</Link></td>
-                                                        <td className="customer_name">Timothy Smith</td>
-                                                        <td className="email">timothysmith@velzon.com</td>
-                                                        <td className="phone">973-277-6950</td>
-                                                        <td className="date">13 Dec, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option11" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2111</Link></td>
-                                                        <td className="customer_name">Johnny Evans</td>
-                                                        <td className="email">johnnyevans@velzon.com</td>
-                                                        <td className="phone">407-645-1767</td>
-                                                        <td className="date">01 Oct, 2021</td>
-                                                        <td className="status"><span className="badge bg-danger-subtle text-danger text-uppercase">Block</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div className="form-check">
-                                                                <input className="form-check-input" type="checkbox" name="checkAll" value="option12" />
-                                                            </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2112</Link></td>
-                                                        <td className="customer_name">Kevin Dawson</td>
-                                                        <td className="email">kevindawson@velzon.com</td>
-                                                        <td className="phone">213-741-4294</td>
-                                                        <td className="date">14 Apr, 2021</td>
-                                                        <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
-                                                        <td>
-                                                            <div className="d-flex gap-2">
-                                                                <div className="edit">
-                                                                    <button className="btn btn-sm btn-primary edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
-                                                                </div>
-                                                                <div className="remove">
-                                                                    <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                {Data.map((element) => (
+                                                     <tr key={element.id}>
+                                                     <th scope="row">
+                                                         <div className="form-check">
+                                                             <input className="form-check-input" type="checkbox" name="checkAll" value="option1" />
+                                                         </div>
+                                                     </th>
+                                                     <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
+                                                     <td className="name">{element.name}</td>
+                                                     <td className="category">{element.category}</td>
+                                                     <td className="name">{element.name}</td>
+                                                     <td className="image">{element.image}</td>
+                                                     <td className="status"><span className="badge bg-success-subtle text-success text-uppercase">Active</span></td>
+                                                     <td>
+                                                         <div className="d-flex gap-2">
+                                                             <div className="edit">
+                                                                 <button className="btn btn-sm btn-primary edit-item-btn"
+                                                                     data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                             </div>
+                                                             <div className="remove">
+                                                                 <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
+                                                             </div>
+                                                         </div>
+                                                     </td>
+                                                 </tr>
+                                                    ))}
+                                                                                                      
                                                 </tbody>
                                             </table>
                                             <div className="noresult" style={{ display: "none" }}>
