@@ -11,16 +11,23 @@ import { useStateContext } from '../contexts/contextProvider';
 
 
 const ManageCategory = () => {
-    const { Data } = useStateContext();
+
+    const { data , addNote , deleteNote} = useStateContext();
 
     const [modal_list, setmodal_list] = useState(false);
+    const [ datas , setdatas] = useState({ id: "" , category: "" , name: "" , image: "" }); 
     function tog_list() {
         setmodal_list(!modal_list);
     }
 
-    const [modal_delete, setmodal_delete] = useState(false);
-    function tog_delete() {
-        setmodal_delete(!modal_delete);
+    const handleClick = (e) => {
+        e.preventDefault();
+        addNote(datas.id , datas.name , datas.image , datas.category);
+        setmodal_list();
+    }
+
+    const onChange = (e) => {
+        setdatas({...datas , [e.target.id] : e.target.value , [e.target.category] : e.target.value , [e.target.name] : e.target.value , [e.target.image] : e.target.value} )
     }
   return (
     <>
@@ -49,7 +56,7 @@ const ManageCategory = () => {
                                             <Col className="col-sm-auto">
                                                 <div>
                                                     <Button color="primary" className="add-btn me-1 bg-blue-400" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
-                                                    <Button className="btn btn-soft-danger"><i className="ri-delete-bin-2-line"></i></Button>
+                                                
                                                 </div>
                                             </Col>
                                         </Row>
@@ -72,15 +79,15 @@ const ManageCategory = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody className="list form-check-all">
-                                                {Data.map((element) => (
+                                                {data.map((element) => (
                                                      <tr key={element.id}>
                                                      <th scope="row">
                                                          <div className="form-check">
                                                              <input className="form-check-input" type="checkbox" name="checkAll" value="option1" />
                                                          </div>
                                                      </th>
-                                                     <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
-                                                     <td className="name">{element.name}</td>
+                                                     <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">{element.id}</Link></td>
+                                                     <td className="id">{element.id}</td>
                                                      <td className="category">{element.category}</td>
                                                      <td className="name">{element.name}</td>
                                                      <td className="image">{element.image}</td>
@@ -92,7 +99,7 @@ const ManageCategory = () => {
                                                                      data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
                                                              </div>
                                                              <div className="remove">
-                                                                 <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
+                                                                 <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" onClick={() => {deleteNote(element.id)}}>Remove</button>
                                                              </div>
                                                          </div>
                                                      </td>
@@ -137,24 +144,24 @@ const ManageCategory = () => {
                 <ModalHeader className="bg-light p-3" toggle={() => { tog_list(); }}> Add Customer </ModalHeader>
                 <form className="tablelist-form">
                     <ModalBody>
-                        <div className="mb-3" id="modal-id" style={{ display: "none" }}>
+                        <div className="mb-3" id="modal-id">
                             <label htmlFor="id-field" className="form-label">ID</label>
-                            <input type="text" id="id-field" className="form-control" placeholder="ID" readOnly />
+                            <input type="text" id="id" name="id" className="form-control" placeholder="Id" onChange={onChange} required />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="Category-field" className="form-label">Category</label>
-                            <input type="text" id="Category-field" className="form-control" placeholder="Category" required />
+                            <input type="text" id="category" name="category" className="form-control" placeholder="Category" onChange={onChange} required />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="Name-field" className="form-label">Name</label>
-                            <input type="Name" id="Name-field" className="form-control" placeholder="Enter Name" required />
+                            <input type="Name" id="name" name="name" className="form-control" placeholder="Enter Name" onChange={onChange} required />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="image-field" className="form-label">Image</label>
-                            <input type="text" id="image-field" className="form-control" placeholder="Enter image" required />
+                            <input type="text" id="image" name="image" className="form-control" placeholder="Enter image" onChange={onChange} required />
                         </div>
                         <div>
                             <label htmlFor="status-field" className="form-label">Status</label>
@@ -168,33 +175,14 @@ const ManageCategory = () => {
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Close</button>
-                            <button type="submit" className="btn btn-success bg-green-500" id="add-btn" onClick={() => setmodal_list(false)}>Add Customer</button>
-                            {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
+                            <button type="submit" className="btn btn-success bg-green-500" id="add-btn" onClick={handleClick} >Submit</button>
+                            
                         </div>
                     </ModalFooter>
                 </form>
             </Modal>
 
-            {/* Remove Modal */}
-            <Modal isOpen={modal_delete} toggle={() => { tog_delete(); }} className="modal fade zoomIn" id="deleteRecordModal" centered >
-                <div className="modal-header">
-                    <Button type="button" onClick={() => setmodal_delete(false)} className="btn-close" aria-label="Close"> </Button>
-                </div>
-                <ModalBody>
-                    <div className="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                            colors="primary:#25a0e2,secondary:#00bd9d" style={{ width: "100px", height: "100px" }}></lord-icon>
-                        <div className="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Are you sure ?</h4>
-                            <p className="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ?</p>
-                        </div>
-                    </div>
-                    <div className="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" className="btn w-sm btn-light" onClick={() => setmodal_delete(false)}>Close</button>
-                        <button type="button" className="btn w-sm btn-primary" id="delete-record">Yes, Delete It!</button>
-                    </div>
-                </ModalBody>
-            </Modal>
+
             </div>
     
 

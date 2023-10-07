@@ -5,58 +5,34 @@ const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
 
   
-const data = [
-    {
-      id: "data",
-      category: "category",
-      name: "name",
-      image: "image",
-      action: "status",
-    },
-    {
-      id: "data2",
-      category: "category1",
-      name: "name1",
-      image: "image1",
-      action: "action1",
-    },
-    {
-      id: "data3",
-      category: "category",
-      name: "name2",
-      image: "image",
-      action: "status",
-    },
-    {
-      id: "data4",
-      category: "category1",
-      name: "name3",
-      image: "image1",
-      action: "action1",
-    },
+const Data = [];
   
-  ];
-  
-  const [ Data , setData ] = useState(data);
+  const [ data , setData ] = useState(Data);
 
   //addNote
-  const addnote = ( Category , name , action ) => {
+  const addNote = ( id , category , name , image ) => {
     //To do api call    
-
-    data = {
-      id: "data5",
-      category: "category",
-      name: "name5",
-      image: "image1",
-      action: "action1",
+    console.log( "Adding a new Note");
+    const data1 = {
+      "id": id,
+      "category": category,
+      "name": name,
+      "image": image,
     }
-    setData(Data.push(data));
+    setData(data.concat(data1));
   
   }
 
   //deleteNote
-  const deleteNote = ( ) => {
-
+  const deleteNote = (id) => {
+    //To do api call   
+    if(id){
+      console.log( "Deleting a new Note" + id);
+      const newdata = data.filter( (user) =>  {return  user.id != id;} );
+      console.log(newdata);
+      setData(newdata);
+    }
+   
   }
 
   //editNote
@@ -66,7 +42,7 @@ const data = [
   }
     return (
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      <StateContext.Provider value={{ Data , setData , addnote , deleteNote , editNote}}>
+      <StateContext.Provider value={{ data , setData , addNote , deleteNote , editNote}}>
         {children}
       </StateContext.Provider>
     );
