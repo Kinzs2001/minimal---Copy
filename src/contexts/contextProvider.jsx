@@ -103,7 +103,7 @@ export const ContextProvider = ({ children }) => {
     if (id) {
       console.log("Deleting a new Note" + id);
       const newdata = data.filter((user) => {
-        return user.id != id;
+        return user.id !== id;
       });
       console.log(newdata);
       setData(newdata);
@@ -115,7 +115,7 @@ export const ContextProvider = ({ children }) => {
     if (id) {
       console.log("Deleting a new Note" + id);
       const newuserdata = userData.filter((user) => {
-        return user.id != id;
+        return user.id !== id;
       });
       console.log(newuserdata);
       setuserData(newuserdata);
