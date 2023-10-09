@@ -223,7 +223,7 @@ const {
                                                 </div>
 
                                                 <div className="mt-4">
-                                                    <button className="btn btn-success w-100" type="submit">Sign Up</button>
+                                                    <button className="btn btn-success w-100 bg-green-500" type="submit">Sign Up</button>
                                                 </div>
 
                                                 <div className="mt-4 text-center">
@@ -232,10 +232,10 @@ const {
                                                     </div>
 
                                                     <div>
-                                                        <button type="button" className="btn btn-primary btn-icon waves-effect waves-light"><i className="ri-facebook-fill fs-16"></i></button>{" "}
-                                                        <button type="button" className="btn btn-danger btn-icon waves-effect waves-light"><i className="ri-google-fill fs-16"></i></button>{" "}
-                                                        <button type="button" className="btn btn-dark btn-icon waves-effect waves-light"><i className="ri-github-fill fs-16"></i></button>{" "}
-                                                        <button type="button" className="btn btn-info btn-icon waves-effect waves-light"><i className="ri-twitter-fill fs-16"></i></button>
+                                                        <button type="button" className="btn btn-primary btn-icon waves-effect waves-light bg-blue-600"><i className="ri-facebook-fill fs-16"></i></button>{" "}
+                                                        <button type="button" className="btn btn-danger btn-icon waves-effect waves-light bg-red-500"><i className="ri-google-fill fs-16"></i></button>{" "}
+                                                        <button type="button" className="btn btn-dark btn-icon waves-effect waves-light bg-black"><i className="ri-github-fill fs-16"></i></button>{" "}
+                                                        <button type="button" className="btn btn-info btn-icon waves-effect waves-light bg-cyan-400"><i className="ri-twitter-fill fs-16"></i></button>
                                                     </div>
                                                 </div>
                                             </Form>

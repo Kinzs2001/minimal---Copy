@@ -100,7 +100,7 @@ const ManageUsers = () => {
   return (
     <>
       <div className="table">
-        <div className="page-content p-5 table-hover">
+        <div className="page-content p-1 m-1 table-hover">
           <Container fluid>
             <BreadCrumb title="User" pageTitle="Dashboard" />
             <Row>
@@ -358,14 +358,14 @@ const ManageUsers = () => {
                 <label htmlFor="image-field" className="form-label">
                   Join In Date
                 </label>
-                {/* <input
+                <input
                   type="text"
 
                   className="form-control"
                   placeholder="joinDate"
                   required
-                /> */}
-                <Flatpickr
+                />
+                {/* <Flatpickr
                 className="form-control"
                 id="joinDate"
                 name="joinDate"
@@ -374,7 +374,7 @@ const ManageUsers = () => {
                 }}
                 placeholder="Select Date"
                   onChange={onChange}
-                />
+                /> */}
               </div>
 
               <div>
@@ -502,15 +502,15 @@ const ManageUsers = () => {
                 <label htmlFor="image-field" className="form-label">
                   Join In Date
                 </label>
-                {/* <input
+                <input
                   type="text"
 
                   className="form-control"
                   placeholder="joinDate"
                   onChange={onChange1}
                   required
-                /> */}
-                <Flatpickr
+                />
+                {/* <Flatpickr
                 className="form-control"
                 id="ejoinDate"
                 name="ejoinDate"
@@ -519,7 +519,7 @@ const ManageUsers = () => {
                 }}
                 value={datas1.ejoinDate}
                 placeholder="Select Date"
-                />
+                /> */}
               </div>
               <div>
                 <label htmlFor="status-field" className="form-label">

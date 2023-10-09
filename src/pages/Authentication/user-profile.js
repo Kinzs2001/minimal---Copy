@@ -154,8 +154,8 @@ const {
                   ) : null}
                   <Input name="idx" value={idx} type="hidden" />
                 </div>
-                <div className="text-center mt-4">
-                  <Button type="submit" color="danger">
+                <div className="text-center mt-4 ">
+                  <Button type="submit" color="danger" className="bg-red-500">
                     Update User Name
                   </Button>
                 </div>

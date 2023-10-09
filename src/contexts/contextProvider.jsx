@@ -143,16 +143,18 @@ export const ContextProvider = ({ children }) => {
     // let newData = JSON.parse(JSON.stringify(data))
 
     //logic to edit
-    for (let index = 0; index < data.length; index++) {
+
+    let newData = data;
+    for (let index = 0; index < newData.length; index++) {
       const element = data[index];
       if (element.id === id) {
-        data[index].category = category;
-        data[index].name = name;
-        data[index].image = image;
+        newData[index].category = category;
+        newData[index].name = name;
+        newData[index].image = image;
         break;
       }
     }
-    setData(data); 
+    setData(newData); 
   };
 
   //editNote to user

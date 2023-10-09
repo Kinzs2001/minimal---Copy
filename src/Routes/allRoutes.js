@@ -12,6 +12,7 @@ import Register from "../pages/Authentication/Register";
 import ManageCategory from "../pages/ManageCategory";
 import ManageUsers from "../pages/ManageUsers";
 import Dashboard from "../pages/Dashboard";
+import Userprofile from "../pages/Authentication/user-profile";
 
 const authProtectedRoutes = [
   // this route should be at the end of all other routes
@@ -25,6 +26,8 @@ const authProtectedRoutes = [
   { path: "/dashboard", component: <Dashboard /> },
   { path: "/manage-users", component: <ManageUsers/> },
   { path: "/manage-category", component: <ManageCategory/> },
+  { path: "/user-profile", component: <Userprofile/> },
+  
 ];
 
 const publicRoutes = [
