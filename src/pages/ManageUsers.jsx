@@ -358,16 +358,25 @@ const ManageUsers = () => {
                 <label htmlFor="image-field" className="form-label">
                   Join In Date
                 </label>
-                <input
+                {/* <input
                   type="text"
-                  id="joinDate"
-                  name="joinDate"
+
                   className="form-control"
                   placeholder="joinDate"
-                  onChange={onChange}
                   required
+                /> */}
+                <Flatpickr
+                className="form-control"
+                id="joinDate"
+                name="joinDate"
+                options={{
+                dateFormat: "d M, Y"
+                }}
+                placeholder="Select Date"
+                  onChange={onChange}
                 />
               </div>
+
               <div>
                 <label htmlFor="status-field" className="form-label">
                   Status
@@ -436,6 +445,7 @@ const ManageUsers = () => {
                   name="id"
                   className="form-control"
                   placeholder="Id"
+                  value={datas1.id}
                   onChange={onChange1}
                   required
                 />
@@ -467,7 +477,6 @@ const ManageUsers = () => {
                   className="form-control"
                   placeholder="email"
                   value={datas1.eemail}
-
                   onChange={onChange1}
                   required
                 />
@@ -493,15 +502,23 @@ const ManageUsers = () => {
                 <label htmlFor="image-field" className="form-label">
                   Join In Date
                 </label>
-                <input
+                {/* <input
                   type="text"
-                  id="ejoinDate"
-                  name="ejoinDate"
+
                   className="form-control"
                   placeholder="joinDate"
-                  value={datas1.ejoinDate}
                   onChange={onChange1}
                   required
+                /> */}
+                <Flatpickr
+                className="form-control"
+                id="ejoinDate"
+                name="ejoinDate"
+                options={{
+                dateFormat: "d M, Y"
+                }}
+                value={datas1.ejoinDate}
+                placeholder="Select Date"
                 />
               </div>
               <div>
@@ -535,7 +552,7 @@ const ManageUsers = () => {
                   id="add-btn"
                   onClick={handleClick1}
                 >
-                  Submit
+                  Update
                 </button>
                 {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
               </div>

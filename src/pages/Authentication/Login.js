@@ -177,7 +177,7 @@ const Login = (props) => {
                                                 </div>
 
                                                 <div className="mt-4">
-                                                    <Button color="success" disabled={error ? null : loading ? true : false} className="btn btn-success w-100" type="submit">
+                                                    <Button color="success" disabled={error ? null : loading ? true : false} className="btn btn-success w-100 bg-green-500" type="submit">
                                                         {error ? null : loading ? <Spinner size="sm" className='me-2'> Loading... </Spinner> : null}
                                                         Sign In
                                                     </Button>
