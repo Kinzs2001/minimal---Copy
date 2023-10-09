@@ -7,12 +7,12 @@ import List from 'list.js';
 import Flatpickr from "react-flatpickr";
 
 //context 
-// import { useStateContext } from '../contexts/contextProvider';
+import { useStateContext } from '../contexts/contextProvider';
 
 
 const ManageCategory = () => {
 
-    // const { userdata , addNote , deleteNote , editNote , getData} = useStateContext();
+    const { userdata , adduserNote , deleteuserNote , edituserNote , getuserData , } = useStateContext();
 
     //1
     const [modal_list, setmodal_list] = useState(false);
@@ -23,7 +23,7 @@ const ManageCategory = () => {
     
     const handleClick = (e) => {
         e.preventDefault();
-        addNote(datas.user , datas.email , datas.phone , datas.joiningdate);
+        adduserNote(datas.user , datas.email , datas.phone , datas.joiningdate);
         setmodal_list();
     }
     
@@ -44,7 +44,7 @@ const ManageCategory = () => {
     
     const handleClick1 = (e) => {
         console.log(userdata)
-        editNote( userdata.user, userdata.email, userdata.phone , userdata.joiningdate)
+        edituserNote( userdata.user, userdata.email, userdata.phone , userdata.joiningdate)
         e.preventDefault();
         setmodal_list1();  
     }
@@ -55,7 +55,7 @@ const ManageCategory = () => {
 
     
     useEffect(() => {
-        getData();
+        getuserData();
     }, [])
     
   return (
@@ -128,7 +128,7 @@ const ManageCategory = () => {
                                                                      data-bs-toggle="modal" data-bs-target="#showModal" onClick={() => tog_list1(element)}>Edit</button>
                                                              </div>
                                                              <div className="remove">
-                                                                 <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" onClick={() => {deleteNote(element.id)}}>Remove</button>
+                                                                 <button className="btn btn-sm btn-success remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" onClick={() => {deleteuserNote(element.id)}}>Remove</button>
                                                              </div>
                                                          </div>
                                                      </td>
