@@ -83,7 +83,7 @@ const ManageCategory = () => {
 
   return (
     <>
-      <div className="table-hover">
+      <div className="table-hover table-fixed">
         <div className="page-content p-1 m-1 ">
           <Container fluid>
             <BreadCrumb title="Category" pageTitle="Dashboard" />
