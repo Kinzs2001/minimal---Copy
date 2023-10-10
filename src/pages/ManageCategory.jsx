@@ -31,9 +31,7 @@ const ManageCategory = () => {
   const [modal_list, setmodal_list] = useState(false);
   const [datas, setdatas] = useState({
     id: "",
-    category: "",
     name: "",
-    image: "",
   });
   function tog_list() {
     setmodal_list(!modal_list);
@@ -41,7 +39,7 @@ const ManageCategory = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    addNote(datas.id, datas.name, datas.image, datas.category);
+    addNote(datas.id, datas.name);
     setmodal_list();
   };
 
@@ -49,9 +47,7 @@ const ManageCategory = () => {
     setdatas({
       ...datas,
       [e.target.id]: e.target.value,
-      [e.target.category]: e.target.value,
       [e.target.name]: e.target.value,
-      [e.target.image]: e.target.value,
     });
   };
 
@@ -59,24 +55,20 @@ const ManageCategory = () => {
   const [modal_list1, setmodal_list1] = useState(false);
   const [datas1, setdatas1] = useState({
     id: "",
-    ecategory: "",
     ename: "",
-    eimage: "",
   });
 
   function tog_list1(currentData) {
     setmodal_list1(!modal_list1);
     setdatas1({
       id: currentData.id,
-      ecategory: currentData.category,
       ename: currentData.name,
-      eimage: currentData.image,
     });
   }
 
   const handleClick1 = (e) => {
     console.log("updating the note..", data);
-    editNote(data.id, data.ecategory, data.ename, data.eimage);
+    editNote(data.id,  data.ename);
     e.preventDefault();
     setmodal_list1();
   };
@@ -152,21 +144,15 @@ const ManageCategory = () => {
                               <th className="sort" data-sort="id">
                                 Id
                               </th>
-                              <th className="sort" data-sort="category">
-                                Category
-                              </th>
+
                               <th className="sort" data-sort="name">
                                 Name
                               </th>
-                              <th className="sort" data-sort="image">
-                                Image
-                              </th>
+
                               <th className="sort" data-sort="action">
                                 Action
                               </th>
-                              <th className="sort" data-sort="status">
-                                Status{" "}
-                              </th>
+
                             </tr>
                           </thead>
                           <tbody className="list form-check-all">
@@ -191,14 +177,7 @@ const ManageCategory = () => {
                                   </Link>
                                 </td>
                                 <td className="id">{element.id}</td>
-                                <td className="category">{element.category}</td>
                                 <td className="name">{element.name}</td>
-                                <td className="image">{element.image}</td>
-                                <td className="status">
-                                  <span className="badge bg-success-subtle text-success text-uppercase">
-                                    Active
-                                  </span>
-                                </td>
                                 <td>
                                   <div className="d-flex gap-2">
                                     <div className="edit">
@@ -303,21 +282,6 @@ const ManageCategory = () => {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="Category-field" className="form-label">
-                  Category
-                </label>
-                <input
-                  type="text"
-                  id="category"
-                  name="category"
-                  className="form-control"
-                  placeholder="Category"
-                  onChange={onChange}
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
                 <label htmlFor="Name-field" className="form-label">
                   Name
                 </label>
@@ -330,36 +294,6 @@ const ManageCategory = () => {
                   onChange={onChange}
                   required
                 />
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="image-field" className="form-label">
-                  Image
-                </label>
-                <input
-                  type="text"
-                  id="image"
-                  name="image"
-                  className="form-control"
-                  placeholder="Enter image"
-                  onChange={onChange}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="status-field" className="form-label">
-                  Status
-                </label>
-                <select
-                  className="form-control"
-                  data-trigger
-                  name="status-field"
-                  id="status-field"
-                >
-                  <option value="">Status</option>
-                  <option value="Active">Active</option>
-                  <option value="Block">Block</option>
-                </select>
               </div>
             </ModalBody>
             <ModalFooter>
@@ -419,21 +353,6 @@ const ManageCategory = () => {
                 />
               </div>
 
-              <div className="mb-3">
-                <label htmlFor="Category-field" className="form-label">
-                  Category
-                </label>
-                <input
-                  type="text"
-                  id="ecategory"
-                  name="ecategory"
-                  className="form-control"
-                  placeholder="Category"
-                  value={datas1.ecategory}
-                  onChange={onChange1}
-                  required
-                />
-              </div>
 
               <div className="mb-3">
                 <label htmlFor="Name-field" className="form-label">
@@ -451,36 +370,6 @@ const ManageCategory = () => {
                 />
               </div>
 
-              <div className="mb-3">
-                <label htmlFor="image-field" className="form-label">
-                  Image
-                </label>
-                <input
-                  type="text"
-                  id="eimage"
-                  name="eimage"
-                  className="form-control"
-                  placeholder="Enter image"
-                  value={datas1.eimage}
-                  onChange={onChange1}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="status-field" className="form-label">
-                  Status
-                </label>
-                <select
-                  className="form-control"
-                  data-trigger
-                  name="status-field"
-                  id="status-field"
-                >
-                  <option value="">Status</option>
-                  <option value="Active">Active</option>
-                  <option value="Block">Block</option>
-                </select>
-              </div>
             </ModalBody>
             <ModalFooter>
               <div className="hstack gap-2 justify-content-end">

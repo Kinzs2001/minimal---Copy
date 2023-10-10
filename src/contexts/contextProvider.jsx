@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
 
 
       //addNote
-      const addNote = async (id, category, name, image) => {
+      const addNote = async (id, name) => {
         //To do api call
       //   const response = await fetch(`${host}/api/notes/editnote/${id}`, {
       //     method: "PUT", // *GET, POST, PUT, DELETE, etc.
@@ -51,9 +51,7 @@ export const ContextProvider = ({ children }) => {
         console.log("Adding a new Note");
         const data1 = {
           id: id,
-          category: category,
           name: name,
-          image: image,
         };
         setData(data.concat(data1));
       };
@@ -75,7 +73,7 @@ export const ContextProvider = ({ children }) => {
 
 
       //editNote
-      const editNote = async (id, category, name, image) => {
+      const editNote = async (id, name) => {
         // to do api call
           //Api call
               //   const response = await fetch(`${host}/api/notes/editnote/${id}`, {
@@ -100,9 +98,7 @@ export const ContextProvider = ({ children }) => {
           const element = newData[index];
           if (element.id === id) {
             newData[index].id = id;
-            newData[index].category = category;
             newData[index].name = name;
-            newData[index].image = image;
             break;
           }
         }
