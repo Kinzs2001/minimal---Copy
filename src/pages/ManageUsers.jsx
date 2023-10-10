@@ -99,8 +99,8 @@ const ManageUsers = () => {
 
   return (
     <>
-      <div className="table">
-        <div className="page-content p-1 m-1 table-hover">
+      <div className="table-hover">
+        <div className="page-content p-1 m-1">
           <Container fluid>
             <BreadCrumb title="User" pageTitle="Dashboard" />
             <Row>
