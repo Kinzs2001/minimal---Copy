@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState , useEffect } from "react";
-
-const StateContext = createContext();
 import axios from "../axios";
-
+const crypto = require('crypto');
+import React, { createContext, useContext, useState , useEffect } from "react";
+const encryptionKey = 'your-secret-key';
+const StateContext = createContext();
 export const ContextProvider = ({ children }) => {
 
   const host =" http://localhost:5000";
@@ -14,22 +14,48 @@ export const ContextProvider = ({ children }) => {
   const [ myData , setmyData] = useState([]);
   const [ isError, setError] = useState("");
 
+  // Create functions for encryption and decryption
+const encrypt = (text) => {
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey), iv);
+  let encrypted = cipher.update(text, 'utf-8', 'hex');
+  encrypted += cipher.final('hex');
+  return iv.toString('hex') + ':' + encrypted;
+};
+
+const decrypt = (text) => {
+  const parts = text.split(':');
+  const iv = Buffer.from(parts[0], 'hex');
+  const encryptedText = parts[1];
+  const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(encryptionKey), iv);
+  let decrypted = decipher.update(encryptedText, 'hex', 'utf-8');
+  decrypted += decipher.final('utf-8');
+  return decrypted;
+};
+
   // ManageCategory
+  
       //Get all notes
       const getData = async () => {
-        // To do api call
-      //   const response = await fetch(`${host}/api/notes/editnote/${id}`, {
-      //     method: "PUT", // *GET, POST, PUT, DELETE, etc.
-      //     headers: {
-      //         "Content-Type": "application/json",
-      //         "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjUwMTYxZDhlMjQyMDdjNGJlNjE2MDE2In0sImlhdCI6MTY5NDU5NTg4MH0.QGYzqh_2nb1KD9JrKGbOz4asKGO-_Kj9XFDhZlSHfoA", 
-      //     },
-
-          
-      // });
-      //   const json = await response.json()
-      //   console.log(json);
-      //   setData(json);
+        try {
+          const response = await axios.get(`${host}/api/notes/allnotes`);
+          const encryptedData = response.data;
+      
+          // Assuming the response contains the list of encrypted notes
+          const decryptedData = encryptedData.map((encryptedNote) => {
+            return {
+              ...encryptedNote,
+              name: decrypt(encryptedNote.name),
+              image: decrypt(encryptedNote.image),
+            };
+          });
+      
+          // Update your state with the decrypted data
+          setData(decryptedData);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setError('Error fetching data: ' + error.message);
+        }
       };
 
 
@@ -37,10 +63,13 @@ export const ContextProvider = ({ children }) => {
       const addNote = async (id, name) => {
         //To do api call
         try {
-          const response = await axios.post('/category-create', {
+          const encryptedName = encrypt(name);
+          const encryptedImage = encrypt(image);
+      
+          const response = await axios.post(`${host}/api/notes/addnote`, {
             category,
-            name,
-            image,
+            name: encryptedName,
+            image: encryptedImage,
           });
       
           // Assuming the response contains the newly added data, you can update your state with it.
