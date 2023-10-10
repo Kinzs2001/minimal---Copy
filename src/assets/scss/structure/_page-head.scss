@@ -3,11 +3,11 @@
 // 
 
 .page-title-box {
-    padding: 10px $grid-gutter-width;
+    padding: 20px $grid-gutter-width;
     background-color: var(--#{$prefix}secondary-bg);
     box-shadow: var(--#{$prefix}page-title-box-shadow);
     border-bottom: 1px solid var(--#{$prefix}page-title-border);
-    margin: -23px (-$grid-gutter-width * 1) $grid-gutter-width (-$grid-gutter-width * 1);
+    margin: -14px (-$grid-gutter-width * 1) $grid-gutter-width (-$grid-gutter-width * 1);
 
     .breadcrumb {
         background-color: transparent;
@@ -39,7 +39,7 @@
 [data-layout="vertical"] {
     &[data-layout-style="detached"]{
         .page-title-box {
-            padding: 1.2rem 0;
+            padding: 16px 1.5rem ;
             background-color: transparent !important;
             border-bottom: none;
             border-top: none;
@@ -47,7 +47,7 @@
             margin: 0;
     
             @media (min-width: 1024.1px) {
-                margin: -19px 0 0 0;
+                margin: -8px 0.5rem 1.5rem -0.5rem ;
             }
         }
     }

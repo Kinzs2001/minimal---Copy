@@ -91,12 +91,12 @@ const ManageCategory = () => {
 
   return (
     <>
-      <div className="table">
-        <div className="page-content p-1 m-1 table-hover">
+      <div className="table-hover">
+        <div className="page-content p-1 m-1 ">
           <Container fluid>
             <BreadCrumb title="Category" pageTitle="Dashboard" />
             <Row>
-              <Col lg={12}>
+              <Col lg={14}>
                 <Card>
                   <CardHeader>
                     <h4 className="card-title mb-0">Manage Category</h4>
