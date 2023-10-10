@@ -25,6 +25,7 @@ import { useStateContext } from "../contexts/contextProvider";
 
 const ManageCategory = () => {
   const { data, addNote, deleteNote, editNote, getData } = useStateContext();
+  console.log(data);
 
   //1
   const [modal_list, setmodal_list] = useState(false);
@@ -93,7 +94,7 @@ const ManageCategory = () => {
       <div className="table">
         <div className="page-content p-1 m-1 table-hover">
           <Container fluid>
-            <BreadCrumb  title="Category" pageTitle="Dashboard" />
+            <BreadCrumb title="Category" pageTitle="Dashboard" />
             <Row>
               <Col lg={12}>
                 <Card>

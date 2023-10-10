@@ -37,10 +37,12 @@ const Sidebar = ({ layoutType }) => {
         <div className="navbar-brand-box">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
-              <img src={logoSm} alt="" height="22" />
+              <div> logo </div>
+              {/* <img src={logoSm} alt="" height="22" /> */}
             </span>
-            <span className="logo-lg">
-              <img src={logoDark} alt="" height="17" />
+            <span className="logo-lg text-xl">
+              <div> logo </div>
+              {/* <img src={logoDark} alt="" height="17" /> */}
             </span>
           </Link>
 
@@ -68,7 +70,7 @@ const Sidebar = ({ layoutType }) => {
             <SimpleBar id="scrollbar" className="h-100">
               <Container fluid>
                 <div id="two-column-menu"></div>
-                <ul className="navbar-nav" id="navbar-nav">
+                <ul className="navbar-nav mt-2" id="navbar-nav">
                   <VerticalLayout layoutType={layoutType} />
                 </ul>
               </Container>

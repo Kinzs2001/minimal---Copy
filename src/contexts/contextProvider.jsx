@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const Data = [];
   const User = [];
   const [data, setData] = useState(Data);
+  console.log(data)
   const [userData, setUserData] = useState(User);
 
 
@@ -94,9 +95,11 @@ export const ContextProvider = ({ children }) => {
         //logic to edit
 
         let newData = data;
+
         for (let index = 0; index < newData.length; index++) {
-          const element = data[index];
+          const element = newData[index];
           if (element.id === id) {
+            newData[index].id = id;
             newData[index].category = category;
             newData[index].name = name;
             newData[index].image = image;

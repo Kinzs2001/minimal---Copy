@@ -154,13 +154,13 @@ const VerticalLayout = (props) => {
                     <React.Fragment key={key}>
                         {/* Main Header */}
                         {item['isHeader'] ?
-                            <li className="menu-title"><span data-key="t-menu">{props.t(item.label)}</span></li>
+                            <li className="menu-title text-xs"><span data-key="t-menu">{props.t(item.label)}</span></li>
                             : (
                                 (item.subItems ? (
-                                    <li className="nav-item">
+                                    <li className="nav-item ">
                                         <Link
                                             onClick={item.click}
-                                            className="nav-link menu-link"
+                                            className="nav-link menu-link mt-1"
                                             to={item.link ? item.link : "/#"}
                                             data-bs-toggle="collapse"
                                         >
