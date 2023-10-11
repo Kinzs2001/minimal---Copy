@@ -21,6 +21,7 @@
     "axios": "^1.5.1",
     "axios-mock-adapter": "^1.21.5",
     "bootstrap": "5.3.0",
+    "buffer": "^6.0.3",
     "chart.js": "^4.3.0",
     "cleave.js": "^1.6.0",
     "cryptlib": "^1.0.3",
@@ -162,6 +163,7 @@
     "tailwindcss": "^3.3.3"
   },
   "browser": {
-    "crypto": false
-}
+    "crypto": false,
+    "util": false
+  }
 }
