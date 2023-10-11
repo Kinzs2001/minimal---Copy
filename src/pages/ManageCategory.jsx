@@ -15,8 +15,8 @@ import {
   Row,
 } from "reactstrap";
 import BreadCrumb from "../Components/Common/BreadCrumb";
-import SimpleBar from "simplebar-react";
 import { Link } from "react-router-dom";
+import SimpleBar from "simplebar-react";
 import List from "list.js";
 import Flatpickr from "react-flatpickr";
 

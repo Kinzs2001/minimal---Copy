@@ -1,9 +1,12 @@
-import React, { createContext, useContext, useState , useEffect } from "react";
+import React, { createContext, useContext, useState  } from "react";
 import axios from "../axios";
+const cryptLib = require('cryptlib');
 
-const crypto = require('crypto');
-const encryptionKey = process.env.SECRET_KEY;
+const iv = cryptLib.generateRandomIV(16); 
+const secretKey = process.env.SECRET_KEY;
+const staticKey = process.env.STATIC_KEY;
 const StateContext = createContext();
+
 
 
 export const ContextProvider = ({ children }) => {
@@ -15,44 +18,60 @@ export const ContextProvider = ({ children }) => {
   const [data, setData] = useState(myData);
   
   // Create functions for encryption and decryption
-const encrypt = (text) => {
-  const iv = crypto.randomBytes(16);
-  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey), iv);
-  let encrypted = cipher.update(text, 'utf-8', 'hex');
-  encrypted += cipher.final('hex');
-  return iv.toString('hex') + ':' + encrypted;
-};
+  function encrypt(data) {
+    try {
+      const key = cryptLib.getHashSha256(secretKey, 32); // Generate a 256-bit key
+      const encryptedText = cryptLib.encrypt(data, key, iv);
+      if(!encryptedText){
+        const obj = {
+          status_code: 0,
+          message: "Encryption error!",
+          data: "Encryption failed. Invalid data or key."
+        }
+        const string = JSON.stringify(obj)
+        const res = encrypt(string);
+        return
+      }else{
+  return encryptedText; // String
+      }
+     } catch (error) {
+      console.error('Encryption error: ' + error.message);
+      throw "Encryption failed. Invalid data or key."
+    }
+  }
 
-const decrypt = (text) => {
-  const parts = text.split(':');
-  const iv = Buffer.from(parts[0], 'hex');
-  const encryptedText = parts[1];
-  const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(encryptionKey), iv);
-  let decrypted = decipher.update(encryptedText, 'hex', 'utf-8');
-  decrypted += decipher.final('utf-8');
-  return decrypted;
-};
+  function decrypt(encryptedText) {
+    try {
+      const key = cryptLib.getHashSha256(secretKey, 32); // Generate a 256-bit key
+      const originalText = cryptLib.decrypt(encryptedText, key, iv);
+      if (!originalText) {
+        const obj = {
+          status_code: 0,
+          message: "Decryption error!",
+          data: "Decryption failed. Invalid data or key."
+        }
+        const string = JSON.stringify(obj)
+        const res = encrypt(string);
+        return res;
+      } else {
+        return originalText; // String
+      }
+    } catch (error) {
+      console.error('Decryption error: ' + error.message);
+      throw "Decryption failed. Invalid data or key.";
+    }
+  }
 
   // ManageCategory
   
       //Get all notes
       const getData = async () => {
         try {
-          const response = await axios.get(`/category_list`);
-          const encryptedData = response.data;
-      
-          // Assuming the response contains the list of encrypted notes
-          const decryptedData = encryptedData.map((encryptedNote) => {
-            return {
-              ...encryptedNote,
-              id: decrypt(encryptedNote.id),
-              name: decrypt(encryptedNote.name),
-            };
-          });
-      
-          // Update your state with the decrypted data
-          setmyData(decryptedData);
-          // console.log(myData);
+          const response = await axios.post(`category_list` ,staticKey);
+          const encryptedData = response.data;   
+          const decryptedData = decrypt(encryptedData);  
+          console.log(decryptedData); 
+          setmyData(decryptedData); 
         } catch (error) {
           console.error('Error fetching data:', error);
           setError('Error fetching data: ' + error.message);
