@@ -1,19 +1,19 @@
-import axios from "../axios";
-const crypto = require('crypto');
 import React, { createContext, useContext, useState , useEffect } from "react";
-const encryptionKey = 'your-secret-key';
+import axios from "../axios";
+
+const crypto = require('crypto');
+const encryptionKey = process.env.SECRET_KEY;
 const StateContext = createContext();
+
+
 export const ContextProvider = ({ children }) => {
 
-  const host =" http://localhost:5000";
-  const Data = [];
   const User = [];
-  const [data, setData] = useState(Data);
-  console.log(data)
   const [userData, setUserData] = useState(User);
   const [ myData , setmyData] = useState([]);
   const [ isError, setError] = useState("");
-
+  const [data, setData] = useState(myData);
+  
   // Create functions for encryption and decryption
 const encrypt = (text) => {
   const iv = crypto.randomBytes(16);
@@ -38,20 +38,21 @@ const decrypt = (text) => {
       //Get all notes
       const getData = async () => {
         try {
-          const response = await axios.get(`${host}/api/notes/allnotes`);
+          const response = await axios.get(`/category-list`);
           const encryptedData = response.data;
       
           // Assuming the response contains the list of encrypted notes
           const decryptedData = encryptedData.map((encryptedNote) => {
             return {
               ...encryptedNote,
+              id: decrypt(encryptedNote.id),
               name: decrypt(encryptedNote.name),
-              image: decrypt(encryptedNote.image),
             };
           });
       
           // Update your state with the decrypted data
-          setData(decryptedData);
+          setmyData(decryptedData);
+          console.log(myData);
         } catch (error) {
           console.error('Error fetching data:', error);
           setError('Error fetching data: ' + error.message);
@@ -59,22 +60,20 @@ const decrypt = (text) => {
       };
 
 
-      //addNote
+    //addNote
+      // To do api call
       const addNote = async (id, name) => {
-        //To do api call
         try {
+          const encryptedid = encrypt(id);
           const encryptedName = encrypt(name);
-          const encryptedImage = encrypt(image);
-      
-          const response = await axios.post(`${host}/api/notes/addnote`, {
-            category,
+          const response = await axios.post(`/category_create`, {
+            id: encryptedid,
             name: encryptedName,
-            image: encryptedImage,
           });
       
           // Assuming the response contains the newly added data, you can update your state with it.
           const newNote = response.data;
-          setData([...data, newNote]);
+          setmyData([...data, newNote]);
         } catch (error) {
           console.error('Error adding note:', error);
           setError('Error adding note: ' + error.message);
@@ -87,14 +86,14 @@ const decrypt = (text) => {
       //deleteNote
       const deleteNote = (id) => {
         //To do api call
-        if (id) {
-          console.log("Deleting a new Note" + id);
-          const newdata = data.filter((user) => {
-            return user.id != id;
-          });
-          console.log(newdata);
-          setData(newdata);
-        }
+      //   if (id) {
+      //     console.log("Deleting a new Note" + id);
+      //     const newdata = data.filter((user) => {
+      //       return user.id != id;
+      //     });
+      //     console.log(newdata);
+      //     setData(newdata);
+      //   }
       };
 
 
@@ -172,7 +171,7 @@ const decrypt = (text) => {
         if (id) {
           console.log("Deleting a new Note" + id);
           const newdata = userData.filter((user) => {
-            return user.id != id;
+            return user.id !== id;
           });
           console.log(newdata);
           setUserData(newdata);
@@ -212,12 +211,7 @@ const decrypt = (text) => {
         setUserData(User); 
       };
 
-      useEffect( () => {
-        addNote();
-        // editNote();
-        // deleteNotes();
-        // getData();
-      },[]);
+
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <StateContext.Provider
