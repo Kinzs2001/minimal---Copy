@@ -38,7 +38,7 @@ const decrypt = (text) => {
       //Get all notes
       const getData = async () => {
         try {
-          const response = await axios.get(`/category-list`);
+          const response = await axios.get(`/category_list`);
           const encryptedData = response.data;
       
           // Assuming the response contains the list of encrypted notes
@@ -52,7 +52,7 @@ const decrypt = (text) => {
       
           // Update your state with the decrypted data
           setmyData(decryptedData);
-          console.log(myData);
+          // console.log(myData);
         } catch (error) {
           console.error('Error fetching data:', error);
           setError('Error fetching data: ' + error.message);
